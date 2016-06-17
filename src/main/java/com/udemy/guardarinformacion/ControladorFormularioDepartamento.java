@@ -26,6 +26,7 @@ public class ControladorFormularioDepartamento implements Initializable {
             String sql = "INSERT INTO departamento(nombre, descripcion) "
                     + "VALUES ('" + nombre.getText() + "', '" + descripcion.getText() + "')";
             statement.executeUpdate(sql);
+            System.out.println("Informacion guardada");
         } catch (Exception e) {
             e.printStackTrace();
         }

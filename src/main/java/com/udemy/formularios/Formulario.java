@@ -13,7 +13,7 @@ public class Formulario extends Application {
 
         Parent contenedor = new FXMLLoader().load(getClass().getResource("FormularioDepartamento.fxml"));
 
-        Scene escena = new Scene(contenedor, 600, 300);
+        Scene escena = new Scene(contenedor, 700, 400);
         primaryStage.setScene(escena);
         primaryStage.show();
     }
