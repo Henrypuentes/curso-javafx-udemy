@@ -32,19 +32,26 @@ public class ControladorCrud implements Initializable {
     @FXML
     TableView<Departamento> tablaDepartamentos;
 
-    int id=0;
+    int idDepartamentoSeleccionado = 0;
+
+    public void editar() {
+        Departamento departamento = tablaDepartamentos.getSelectionModel().getSelectedItem();
+        nombre.setText(departamento.getNombre());
+        descripcion.setText(departamento.getDescripcion());
+        idDepartamentoSeleccionado = departamento.getId();
+    }
 
     public void guardar() {
         try (Connection conexionDB = DriverManager.getConnection("jdbc:h2:./target/demo", "sa", "")) {
             Statement statement = conexionDB.createStatement();
-            String sql =null;
-            if(id==0) {
+            String sql = null;
+            if (idDepartamentoSeleccionado == 0) {
                 sql = "INSERT INTO departamento(nombre, descripcion) "
                         + "VALUES ('" + nombre.getText() + "', '" + descripcion.getText() + "')";
-            }else{
-                sql = "UPDATE departamento set nombre='"+nombre.getText()+
-                        "', descripcion='"+descripcion.getText()+"' WHERE id="+id;
-                id=0;
+            } else {
+                sql = "UPDATE departamento set nombre='" + nombre.getText() +
+                        "', descripcion='" + descripcion.getText() + "' WHERE id=" + idDepartamentoSeleccionado;
+                idDepartamentoSeleccionado = 0;
             }
             statement.executeUpdate(sql);
         } catch (Exception e) {
@@ -55,6 +62,19 @@ public class ControladorCrud implements Initializable {
 
         nombre.clear();
         descripcion.clear();
+    }
+
+    public void eliminar() {
+        Departamento departamento = tablaDepartamentos.getSelectionModel().getSelectedItem();
+        try (Connection conexionDB = DriverManager.getConnection("jdbc:h2:./target/demo", "sa", "")) {
+            Statement statement = conexionDB.createStatement();
+            String sql = "DELETE FROM departamento WHERE id=" + departamento.getId();
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        cargarDepartamentosDeLaBase();
     }
 
     @Override
@@ -78,7 +98,7 @@ public class ControladorCrud implements Initializable {
     private void cargarDepartamentosDeLaBase() {
         try (Connection conexionDB = DriverManager.getConnection("jdbc:h2:./target/demo", "sa", "")) {
             Statement statement = conexionDB.createStatement();
-            String sql = "SELECT * FROM departamento";
+            String sql = "SELECT * FROM departamento ORDER BY id";
             ResultSet resultSet = statement.executeQuery(sql);
             ObservableList<Departamento> departamentos = FXCollections.observableArrayList();
             while (resultSet.next()) {
@@ -102,27 +122,6 @@ public class ControladorCrud implements Initializable {
         columnas.get(2).setMaxWidth(1f * Integer.MAX_VALUE * 60); // 60%
     }
 
-
-    public void editar() {
-        Departamento departamento = tablaDepartamentos.getSelectionModel().getSelectedItem();
-        nombre.setText(departamento.getNombre());
-        descripcion.setText(departamento.getDescripcion());
-        id=departamento.getId();
-    }
-
-    public void eliminar() {
-
-        Departamento departamento = tablaDepartamentos.getSelectionModel().getSelectedItem();
-        try (Connection conexionDB = DriverManager.getConnection("jdbc:h2:./target/demo", "sa", "")) {
-            Statement statement = conexionDB.createStatement();
-            String sql ="DELETE FROM departamento WHERE id="+departamento.getId();
-            statement.executeUpdate(sql);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        cargarDepartamentosDeLaBase();
-    }
 }
 
 

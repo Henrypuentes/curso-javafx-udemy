@@ -12,14 +12,10 @@ public class AplicacionCrud extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         Parent contenedor = new FXMLLoader().load(getClass().getResource("Crud.fxml"));
-
         Scene escena = new Scene(contenedor, 900, 400);
+//        escena.getStylesheets().addAll(getClass().getResource("estilos.css").toExternalForm());
         primaryStage.setScene(escena);
         primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 
 }

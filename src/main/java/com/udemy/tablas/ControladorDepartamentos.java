@@ -17,9 +17,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-/**
- * Created by moe on 6/17/16.
- */
 public class ControladorDepartamentos implements Initializable {
 
     @FXML
