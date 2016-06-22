@@ -1,6 +1,8 @@
-package com.udemy.persistencia;
+package com.udemy.rrhhdepartamentos.departamentos;
+
 
 import com.udemy.persistencia.dao.DepartamentoDao;
+import com.udemy.rrhhdepartamentos.layout.ControladorConNavegabilidad;
 import com.udemy.tablas.Departamento;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,17 +14,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
 import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * Created by moe on 6/17/16.
+ * Created by rene on 22/06/16.
  */
-public class ControladorCrudDao implements Initializable {
-
+public class AdministracionDepartamentosControlador extends ControladorConNavegabilidad implements Initializable {
     @FXML
     TextField nombre;
 
@@ -87,5 +85,3 @@ public class ControladorCrudDao implements Initializable {
         cargarDepartamentosDeLaBase();
     }
 }
-
-

@@ -14,6 +14,7 @@ public class AplicacionCrudDao extends Application {
         Parent contenedor = new FXMLLoader().load(getClass().getResource("CrudDao.fxml"));
 
         Scene escena = new Scene(contenedor, 900, 400);
+        escena.getStylesheets().addAll(getClass().getResource("estilos.css").toExternalForm());
         primaryStage.setScene(escena);
         primaryStage.show();
     }

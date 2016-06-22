@@ -12,23 +12,29 @@ import java.util.List;
 /**
  * Created by rene on 21/06/16.
  */
-public class DepartamentoDao {
+public class EmpleadoDao {
 
     public static final String URL_CONEXION = "jdbc:h2:./target/demo";
     public static final String USUARIO_BDD = "sa";
     public static final String PASSWORD_BDD = "";
 
-    public DepartamentoDao() {
+    public EmpleadoDao() {
         crearTablaSiNoExiste();
     }
 
     private void crearTablaSiNoExiste() {
         try (Connection conexionDB = DriverManager.getConnection(URL_CONEXION, USUARIO_BDD, PASSWORD_BDD)) {
             Statement statement = conexionDB.createStatement();
-            String sql = "CREATE TABLE IF NOT EXISTS departamento" +
+            String sql = "CREATE TABLE IF NOT EXISTS empleado" +
                     "(id INTEGER auto_increment, " +
                     " nombre VARCHAR(255), " +
-                    " descripcion VARCHAR(255) )";
+                    " apellido VARCHAR(255), " +
+                    " fecha_contratacion DATE, " +
+                    " genero VARCHAR(255), " +
+                    " experiencia_laboral VARCHAR(255)," +
+                    " id_departamento INTEGER, " +
+                    " FOREIGN KEY (id_departamento)" +
+                    " REFERENCES public.departamento(id))";
             statement.executeUpdate(sql);
         } catch (Exception e) {
             e.printStackTrace();

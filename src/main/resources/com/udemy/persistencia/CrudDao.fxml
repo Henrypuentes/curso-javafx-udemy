@@ -69,8 +69,6 @@
         <Label text="Descripcion" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
         <TextArea GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="descripcion"/>
 
-        <Button GridPane.rowIndex="3" GridPane.columnIndex="1" text="Guardar" onAction="#guardar"/>
-
     </GridPane>
 
     <StackPane HBox.hgrow="ALWAYS">
