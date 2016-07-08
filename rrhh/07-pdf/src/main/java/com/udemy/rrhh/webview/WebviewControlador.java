@@ -4,7 +4,6 @@ import com.udemy.persistencia.dao.DepartamentoDao;
 import com.udemy.rrhh.layout.ControladorConNavegabilidad;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import java.net.URL;
@@ -22,15 +21,14 @@ public class WebviewControlador extends ControladorConNavegabilidad implements I
     private DepartamentoDao departamentoDao;
 
     public void mostrarDepartamentosComoPdf() throws Exception {
-        new DepartamentosHtml(departamentoDao.buscarTodos()).generarArchivoPdf();
+        new DepartamentosComoArchivos(departamentoDao.buscarTodos()).generarArchivoPdf();
         String url = getClass().getResource("pdfjs/web/viewer.html").toExternalForm();
         webView.getEngine().load(url);
     }
 
     public void mostrarDepartamentos() throws Exception {
-        new DepartamentosHtml(departamentoDao.buscarTodos()).generarArchivoHtml();
+        new DepartamentosComoArchivos(departamentoDao.buscarTodos()).generarArchivoHtml();
         String url = Paths.get("departamentos.html").toUri().toURL().toExternalForm();
-        webView.getEngine().load(url);
         webView.getEngine().load(url);
     }
 

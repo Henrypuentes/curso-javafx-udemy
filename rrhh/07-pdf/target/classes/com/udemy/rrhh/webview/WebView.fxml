@@ -11,7 +11,8 @@
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
 
-    <Button text="Mostrar departamentos como PDF" onAction="#mostrarDepartamentosComoPdf"/>
+    <Button text="Mostrar departamentos como PDF"
+            onAction="#mostrarDepartamentosComoPdf"/>
 
     <Button text="Mostrar departamentos" onAction="#mostrarDepartamentos"/>
 
