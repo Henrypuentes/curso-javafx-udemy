@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="20"
+      fx:controller="com.udemy.rrhh.webview.WebviewControlador">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Button text="Mostrar departamentos como PDF"
+            onAction="#mostrarDepartamentosComoPdf"/>
+
+    <Button text="Mostrar departamentos" onAction="#mostrarDepartamentos"/>
+
+    <WebView fx:id="webView"></WebView>
+
+</VBox>
