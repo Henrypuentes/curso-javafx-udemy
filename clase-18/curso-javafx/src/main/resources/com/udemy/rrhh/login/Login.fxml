@@ -31,8 +31,8 @@
 
                 <HBox spacing="15" GridPane.columnIndex="2"
                       GridPane.rowIndex="3">
-                    <Button text="Iniciar sesion" onAction="#login"/>
-                    <Button text="Cancelar" onAction="#cancelar"/>
+                    <Button text="Iniciar sesion" onAction="#login" styleClass="btn-primary"/>
+                    <Button text="Cancelar" onAction="#cancelar" styleClass="btn-danger"/>
                 </HBox>
 
             </GridPane>
