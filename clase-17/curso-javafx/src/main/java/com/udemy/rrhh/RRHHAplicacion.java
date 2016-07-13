@@ -13,9 +13,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * Created by rene on 21/06/16.
- */
 public class RRHHAplicacion extends Application {
 
     @Override

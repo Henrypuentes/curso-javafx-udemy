@@ -5,9 +5,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
-/**
- * Created by moe on 7/10/16.
- */
 public class LoginControlador extends ControladorConNavegabilidad {
 
     @FXML

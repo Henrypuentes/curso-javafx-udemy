@@ -12,9 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-/**
- * Created by moe on 7/10/16.
- */
 public class LoginControlador extends ControladorConNavegabilidad {
 
     UsuarioDao usuarioDao;
@@ -39,7 +36,7 @@ public class LoginControlador extends ControladorConNavegabilidad {
             Stage stage = (Stage) layout.getScene().getWindow();
             stage.hide();
 
-            layout.mostrarComoPantallaActual("departamentos");
+            layout.mostrarComoPantallaActual(null);
             stage = new Stage();
             stage.setScene(layout.getScene());
             stage.setMaximized(true);

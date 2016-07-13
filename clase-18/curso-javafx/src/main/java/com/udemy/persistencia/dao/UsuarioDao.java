@@ -1,14 +1,10 @@
 package com.udemy.persistencia.dao;
 
-import com.udemy.domain.Empleado;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Created by moe on 6/30/16.
- */
 public class UsuarioDao {
 
 
@@ -30,18 +26,6 @@ public class UsuarioDao {
         }
     }
 
-    public boolean existeUsuario(String username, String password) {
-        try (Connection conexionDB = DriverManager.getConnection(DepartamentoDao.URL_CONEXION, DepartamentoDao.USUARIO_BDD, DepartamentoDao.PASSWORD_BDD)) {
-            Statement statement = conexionDB.createStatement();
-            String sql = "SELECT * FROM usuario WHERE nombre_usuario='" + username
-                    + "' AND password='" + password + "'";
-            ResultSet resultSet = statement.executeQuery(sql);
-            return resultSet.next();
-        } catch (Exception e) {
-            throw new RuntimeException("Ocurrio un error al consultar la informacion: " + e.getMessage());
-        }
-    }
-
     public void insertarUsuarioSiNoHay() {
         boolean existeUsuario = existeUsuario("admin", "admin");
         if (!existeUsuario) {
@@ -52,6 +36,18 @@ public class UsuarioDao {
             } catch (Exception e) {
                 throw new RuntimeException("Ocurrio un error al guardar la informacion: " + e.getMessage());
             }
+        }
+    }
+
+    public boolean existeUsuario(String username, String password) {
+        try (Connection conexionDB = DriverManager.getConnection(DepartamentoDao.URL_CONEXION, DepartamentoDao.USUARIO_BDD, DepartamentoDao.PASSWORD_BDD)) {
+            Statement statement = conexionDB.createStatement();
+            String sql = "SELECT * FROM usuario WHERE nombre_usuario='" + username
+                    + "' AND password='" + password + "'";
+            ResultSet resultSet = statement.executeQuery(sql);
+            return resultSet.next();
+        } catch (Exception e) {
+            throw new RuntimeException("Ocurrio un error al consultar la informacion: " + e.getMessage());
         }
     }
 
